@@ -15,7 +15,8 @@ import './style.scss';
 
 const Filter = challengeUtils.filter;
 
-const RSS_LINK = 'http://feeds.topcoder.com/challenges/feed?list=active&contestType=all';
+// DISABLED: Until feeds.topcoder.com domain fixed community-app#4606
+// const RSS_LINK = 'http://feeds.topcoder.com/challenges/feed?list=active&contestType=all';
 
 export default function BucketSelector({
   activeBucket,
@@ -92,7 +93,7 @@ export default function BucketSelector({
             <div>
               <div styleName="my-filters">
                 <h1>
-My filters
+                  My filters
                 </h1>
                 <a
                   onClick={() => setEditSavedFiltersMode(true)}
@@ -101,7 +102,7 @@ My filters
                   styleName="edit-link"
                   tabIndex={0}
                 >
-                edit
+                  edit
                 </a>
               </div>
               {savedFiltersRender}
@@ -109,11 +110,14 @@ My filters
           ) : ''
       }
       <hr />
+      {/* DISABLED: Until feeds.topcoder.com domain fixed community-app#4606 */}
+      {/*
       <div styleName="get-rss">
         <a href={RSS_LINK}>
-Get the RSS feed
+          Get the RSS feed
         </a>
       </div>
+      */}
     </div>
   );
 }
@@ -130,7 +134,6 @@ BucketSelector.propTypes = {
   activeSavedFilter: PT.number.isRequired,
   buckets: PT.shape().isRequired,
   challenges: PT.arrayOf(PT.shape({
-    registrationOpen: PT.string.isRequired,
   })).isRequired,
   communityFilter: PT.shape(),
   disabled: PT.bool,
